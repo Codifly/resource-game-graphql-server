@@ -1,0 +1,16 @@
+SERVER_USER="codifly"
+SERVER_HOSTNAME="resource-game.codifly.be"
+SERVER_TARGET_DIR=/home/codifly/apps/resource-game
+
+# Push all resources to the server
+rsync -avr -e "ssh -l $SERVER_USER" app.js $SERVER_HOSTNAME:$SERVER_TARGET_DIR/app.js
+rsync -avr -e "ssh -l $SERVER_USER" package.json $SERVER_HOSTNAME:$SERVER_TARGET_DIR/package.json
+rsync -avr -e "ssh -l $SERVER_USER" dist/ $SERVER_HOSTNAME:$SERVER_TARGET_DIR/dist/
+
+# Run some server script to finalize deployment
+cat << EOF | ssh $SERVER_USER@$SERVER_HOSTNAME 'bash -s'
+cd $SERVER_TARGET_DIR
+yarn install --ignore-engines
+mkdir -p tmp
+touch tmp/restart.txt
+EOF
