@@ -1,0 +1,28 @@
+export default {
+  // Period between gathering resources (in seconds)
+  LUMBERYARD_TIMEOUT: 10,
+  MINE_TIMEOUT: 10,
+  SMITHY_TIMEOUT: 10,
+
+  // Base amount of resources gathered
+  LUMBERYARD_BASE_AMOUNT: 50,
+  MINE_BASE_AMOUNT: 50,
+  SMITHY_BASE_AMOUNT: 50,
+
+  // Base price of a level up
+  LUMBERYARD_BASE_PRICE: 1000,
+  MINE_BASE_PRICE: 1000000,
+  SMITHY_BASE_PRICE: 1000000000,
+
+  // Base price of a resource gatherer
+  LUMBERJACK_BASE_PRICE: 50,
+  MINER_BASE_PRICE: 50000,
+  BLACKSMITH_BASE_PRICE: 50000000,
+
+  WOOD_PRICE: 1,
+  STONE_PRICE: 1000,
+  IRON_PRICE: 1000000,
+
+  OBJECT_PRICE_INCREASE: 1.05,
+  LEVEL_PRICE_INCREASE: 100,
+};
