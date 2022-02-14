@@ -11,7 +11,7 @@ const HOST = process.env.HOST || 'localhost';
 const SECRET: string = process.env.SECRET || 'SuP3r-s3Cr3T';
 const DEV = process.env.NODE_ENV === 'development';
 
-const FULL_HOST = DEV ? `http://${HOST}:${PORT}` : 'https://${HOST}';
+const FULL_HOST = DEV ? `http://${HOST}:${PORT}` : `https://${HOST}`;
 
 export interface Services {
   bonusService: BonusService;
