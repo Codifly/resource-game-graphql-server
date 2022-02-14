@@ -6,7 +6,6 @@ const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 const DATABASE = process.env.DB_DATABASE;
 const URL = process.env.DB_URL;
-const SSL = process.env.DB_SSL;
 
 const DEV = process.env.NODE_ENV === 'development';
 
@@ -16,7 +15,7 @@ export default async function initializeDB() {
     await createConnection({
       type: 'postgres',
       url: URL,
-      ssl: SSL === 'true',
+      ssl: DEV ? false : { rejectUnauthorized: false },
       entities: [DEV ? 'src/**/*.ts' : 'dist/src/**/*.js'],
       migrations: [DEV ? 'migration/**/*.ts' : 'dist/migration/**/*.js'],
       migrationsRun: true,
@@ -31,7 +30,7 @@ export default async function initializeDB() {
     username: USERNAME,
     password: PASSWORD,
     database: DATABASE,
-    ssl: SSL === 'true',
+    ssl: DEV ? false : { rejectUnauthorized: false },
     entities: [DEV ? 'src/**/*.ts' : 'dist/src/**/*.js'],
     migrations: [DEV ? 'migration/**/*.ts' : 'dist/migration/**/*.js'],
     migrationsRun: true,
