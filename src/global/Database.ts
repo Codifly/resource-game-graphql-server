@@ -10,7 +10,6 @@ const URL = process.env.DB_URL;
 const DEV = process.env.NODE_ENV === 'development';
 
 export default async function initializeDB() {
-  console.log('URL: ', URL);
   if (URL && URL.length > 0) {
     await createConnection({
       type: 'postgres',
